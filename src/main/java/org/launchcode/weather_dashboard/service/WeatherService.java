@@ -24,6 +24,7 @@ import org.springframework.web.client.HttpClientErrorException;
 public class WeatherService {
 
     // TODO #4A: Create a new instance of RestTemplate
+    RestTemplate restTemplate = new RestTemplate();
     private static final String API_KEY = "e545f065756897815298117073bed7af"; // see note above
     private static final String GEO_URL = "http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={key}";
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=metric";
@@ -33,7 +34,12 @@ public class WeatherService {
             // Step 1: Call Geocoding API to get coordinates using city name
             // TODO #4B: replace null with the necessary use of your RestTemplate instance
             //  and pass in all necessary arguments for the endpoint, class, and the placeholders in GEO_URL
-            GeocodeResult[] geoResults = null;
+            GeocodeResult[] geoResults = restTemplate.getForObject(
+                    GEO_URL,
+                    GeocodeResult[].class,
+                    city,
+                    API_KEY
+            );
 
             if (geoResults == null || geoResults.length == 0) {
                 throw new RuntimeException("City not found: " + city);
@@ -45,7 +51,15 @@ public class WeatherService {
             // Step 2: Call Weather API using lat/lon
             // TODO #4C: replace null with the necessary use of your RestTemplate instance
             //  and pass in all necessary arguments for the endpoint, class, and the placeholders in WEATHER_URL
-            WeatherData weather = null;
+            WeatherData weather = restTemplate.getForObject(
+                    WEATHER_URL,
+                    WeatherData.class,
+                    lat,
+                    lon,
+                    API_KEY
+            );
+
+
 
             if (weather == null) {
                 throw new RuntimeException("No weather data received for coordinates (" + lat + ", " + lon + ")");

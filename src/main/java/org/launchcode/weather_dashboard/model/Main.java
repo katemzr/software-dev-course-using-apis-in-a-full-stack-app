@@ -20,4 +20,44 @@ public class Main {
     //  For "feels_like", you should use camelCase for the Java variable, then
     //  add the annotation @JsonProperty("feels_like") above it to correlate them.
 
+    private double temp;
+
+    @JsonProperty("feels_like")
+    private double feelsLike;
+
+    private int pressure;
+
+    private int humidity;
+
+    public double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(double temp) {
+        this.temp = temp;
+    }
+
+    public double getFeelsLike() {
+        return feelsLike;
+    }
+
+    public void setFeelsLike(double feelsLike) {
+        this.feelsLike = feelsLike;
+    }
+
+    public int getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(int pressure) {
+        this.pressure = pressure;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
 }
