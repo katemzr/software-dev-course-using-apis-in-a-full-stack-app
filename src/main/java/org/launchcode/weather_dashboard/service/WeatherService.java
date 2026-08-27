@@ -25,7 +25,7 @@ public class WeatherService {
 
     // TODO #4A: Create a new instance of RestTemplate
     RestTemplate restTemplate = new RestTemplate();
-    private static final String API_KEY = "e545f065756897815298117073bed7af"; // see note above
+    private static final String API_KEY = "2e541508faae24157ab3a6b07631a84b"; // see note above
     private static final String GEO_URL = "http://api.openweathermap.org/geo/1.0/direct?q={city}&limit=1&appid={key}";
     private static final String WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={key}&units=metric";
 
